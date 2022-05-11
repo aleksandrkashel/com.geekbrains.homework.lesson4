@@ -31,23 +31,17 @@ public class Homework5 {
         System.arraycopy(arr, 0, leftHalf, 0, half);
         System.arraycopy(arr, half, rightHalf, 0, half);
 
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < leftHalf.length; i++) {
-                    leftHalf[i] = (float) (leftHalf[i] * Math.sin(0.2f + i / 5.0) * Math.cos(0.2f + i / 5.0)
-                            * Math.cos(0.4f + i / 2.0));
-                }
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < leftHalf.length; i++) {
+                leftHalf[i] = (float) (leftHalf[i] * Math.sin(0.2f + i / 5.0) * Math.cos(0.2f + i / 5.0)
+                        * Math.cos(0.4f + i / 2.0));
             }
         });
 
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < rightHalf.length; i++) {
-                    rightHalf[i] = (float) (rightHalf[i] * Math.sin(0.2f + i / 5.0) * Math.cos(0.2f + i / 5.0)
-                            * Math.cos(0.4f + i / 2.0));
-                }
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < rightHalf.length; i++) {
+                rightHalf[i] = (float) (rightHalf[i] * Math.sin(0.2f + i / 5.0) * Math.cos(0.2f + i / 5.0)
+                        * Math.cos(0.4f + i / 2.0));
             }
         });
 
